@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50" 4K Smart Tv - 80% OFF!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .badge {
+            background: #ff3b30;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .amazon-logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            color: #1d1d1f;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .price-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            font-size: 20px;
+            opacity: 0.8;
+        }
+        
+        .sale-price {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .discount-badge {
+            background: #ff3b30;
+            padding: 5px 15px;
+            border-radius: 10px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #f5f5f7;
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-item img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .carousel-dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .dot.active {
+            background-color: #667eea;
+        }
+        
+        .specs {
+            background: #f5f5f7;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+        
+        .spec-icon {
+            font-size: 20px;
+            margin-right: 12px;
+        }
+        
+        .timer {
+            background: #ff3b30;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        .timer-text {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .countdown {
+            font-size: 32px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .share-section {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: white;
+            width: 0%;
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #19547b;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .share-count {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .share-btn {
+            width: 100%;
+            padding: 18px;
+            background: white;
+            color: #19547b;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 20px;
+            background: #999;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: not-allowed;
+            margin-top: 20px;
+            opacity: 0.5;
+            transition: all 0.3s;
+        }
+        
+        .checkout-btn.active {
+            background: #34c759;
+            cursor: pointer;
+            opacity: 1;
+            animation: glow 2s infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(52, 199, 89, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(52, 199, 89, 0.8); }
+        }
+        
+        .footer {
+            background: #f5f5f7;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            font-size: 11px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .footer-link {
+            color: #0066c0;
+            text-decoration: none;
+        }
+        
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+        }
+        
+        .lang-switcher:hover {
+            background: #f5f5f7;
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switcher" onclick="switchLanguage()">
+        🌐 <span id="currentLang">English</span>
+    </div>
+
+    <div class="container">
+        <svg class="amazon-logo" viewBox="0 0 603 182" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#FF9900" d="M374.3 141.5c-53.7 39.7-131.6 60.8-198.7 60.8-94 0-178.8-34.8-242.8-92.6-5-4.5-.5-10.7 5.5-7.2 69 40.2 154.2 64.4 242.2 64.4 59.4 0 124.7-12.3 184.8-37.8 9-3.8 16.5 5.9 9 12.4z"/>
+            <path fill="#FF9900" d="M387.5 126.2c-6.9-8.8-45.4-4.2-62.7-2.1-5.3.6-6.1-4-1.3-7.4 30.7-21.6 81-15.4 86.9-8.1 5.8 7.3-.6 58-30.5 82.2-4.6 3.7-8.9 1.7-6.9-3.2 6.5-16.4 21.1-53 14.5-61.4z"/>
+        </svg>
+        
+        <span class="badge" id="flashBadge">⚡ FLASH SALE - LIMITED TIME!</span>
+        
+        <h1 id="productTitle">Insignia™ - 50" 4K Smart Tv</h1>
+        
+        <div class="price-section">
+            <div class="original-price" id="originalPrice">Was: $180</div>
+            <div class="sale-price">$34.99</div>
+            <div class="discount-badge" id="discountBadge">SAVE 80%!</div>
+        </div>
+        
+        <div class="carousel" id="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <div class="carousel-item">
+                    <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/d45fac79-a7c2-49a0-9b84-102953a03663.jpg;maxHeight=828;maxWidth=400?format=webp" alt="Smart Tv Front">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6ac0885e-3095-4be1-9e15-047477207649.jpg;maxHeight=828;maxWidth=400?format=webp" alt="Smart Tv Side">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5addf496-b30b-4eb2-8c4d-109d699e699e.jpg;maxHeight=828;maxWidth=400?format=webp" alt="Smart Tv Back">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/474120b9-c3bf-4b4c-bb94-f1c8be20a5ba.jpg;maxHeight=828;maxWidth=400?format=webp" alt="Smart Tv Display">
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-dots">
+            <span class="dot active" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+            <span class="dot" onclick="goToSlide(3)"></span>
+        </div>
+        
+        <div class="specs">
+            <h3 style="margin-bottom: 15px;" id="specsTitle">✨ What You Get:</h3>
+            <div class="spec-item">
+                <span class="spec-icon">📺</span>
+                <span><strong><span id="resolution">4K Resolution</span></strong> - <span id="resolutionDesc">Never watch blurry TV again</span></span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-icon">🎤</span>
+                <span><strong><span id="voiceAssistant">Voice Assistant Built-in</span></strong> - <span id="voiceDesc">Alexa Amazon</span></span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-icon">📱</span>
+                <span><strong><span id="smartCapable">Smart Capable?</span></strong> - <span id="smartDesc">Yes.</span></span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-icon">🔌</span>
+                <span><strong><span id="hdmi">HDMI Built in</span></strong> - <span id="hdmiDesc">Connect your devices through HDMI!</span></span>
+            </div>      
+        </div>
+        
+        <div class="timer">
+            <div class="timer-text" id="timerText">⏰ OFFER EXPIRES IN:</div>
+            <div class="countdown" id="countdown">40:00</div>
+        </div>
+        
+        <div class="share-section">
+            <h3 id="unlockTitle">🎁 Unlock Your Deal!</h3>
+            <p style="margin: 10px 0; font-size: 14px;" id="shareDesc">Share this amazing deal with 5 friends to unlock checkout!</p>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress">0/5</div>
+            </div>
+            
+            <div class="share-count" id="shareCount">0/5 Friends</div>
+            
+            <button class="share-btn" onclick="shareLink()" id="shareBtn">
+                📤 <span id="shareBtnText">Share to Unlock</span>
+            </button>
+        </div>
+        
+        <button class="checkout-btn" id="checkoutBtn" onclick="goToCheckout()">
+            🔒 <span id="checkoutBtnText">PROCEED TO CHECKOUT</span>
+        </button>
+        
+        <div class="footer">
+            <strong>© 1996-2026, Amazon.com, Inc. <span id="orAffiliates">or its affiliates</span></strong>
+            <div class="footer-links">
+                <a href="#" class="footer-link" id="conditionsLink">Conditions of Use</a>
+                <a href="#" class="footer-link" id="privacyLink">Privacy Notice</a>
+                <a href="#" class="footer-link" id="interestLink">Interest-Based Ads</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Translation object
+        const translations = {
+            en: {
+                currentLang: 'English',
+                flashBadge: '⚡ FLASH SALE - LIMITED TIME!',
+                productTitle: 'Insignia™ - 50" 4K Smart Tv',
+                originalPrice: 'Was: $180',
+                discountBadge: 'SAVE 80%!',
+                specsTitle: '✨ What You Get:',
+                resolution: '4K Resolution',
+                resolutionDesc: 'Never watch blurry TV again',
+                voiceAssistant: 'Voice Assistant Built-in',
+                voiceDesc: 'Alexa Amazon',
+                smartCapable: 'Smart Capable?',
+                smartDesc: 'Yes.',
+                hdmi: 'HDMI Built in',
+                hdmiDesc: 'Connect your devices through HDMI!',
+                timerText: '⏰ OFFER EXPIRES IN:',
+                unlockTitle: '🎁 Unlock Your Deal!',
+                shareDesc: 'Share this amazing deal with 5 friends to unlock checkout!',
+                shareCount: '0/5 Friends',
+                shareBtnText: 'Share to Unlock',
+                checkoutBtnText: 'PROCEED TO CHECKOUT',
+                orAffiliates: 'or its affiliates',
+                conditionsLink: 'Conditions of Use',
+                privacyLink: 'Privacy Notice',
+                interestLink: 'Interest-Based Ads'
+            },
+            es: {
+                currentLang: 'Español',
+                flashBadge: '⚡ VENTA RELÁMPAGO - ¡TIEMPO LIMITADO!',
+                productTitle: 'Insignia™ - 50" 4K Smart Tv',
+                originalPrice: 'Era: $180',
+                discountBadge: '¡AHORRA 80%!',
+                specsTitle: '✨ Lo Que Obtienes:',
+                resolution: 'Calidad 4K',
+                resolutionDesc: 'Nunca mires television borroso de nuevo',
+                voiceAssistant: 'Asistente de voz',
+                voiceDesc: 'Alexa Amazon',
+                smartCapable: '¿Capaz de ser inteligente?',
+                smartDesc: 'Sí.',
+                hdmi: 'HDMI compatible',
+                hdmiDesc: 'Conecta tus dispositivos mediante HDMI',
+                timerText: '⏰ LA OFERTA EXPIRA EN:',
+                unlockTitle: '🎁 ¡Desbloquea Tu Oferta!',
+                shareDesc: '¡Comparte esta increíble oferta con 5 amigos para desbloquear el pago!',
+                shareCount: '0/5 Amigos',
+                shareBtnText: 'Compartir para Desbloquear',
+                checkoutBtnText: 'PROCEDER AL PAGO',
+                orAffiliates: 'o sus afiliados',
+                conditionsLink: 'Condiciones de Uso',
+                privacyLink: 'Aviso de Privacidad',
+                interestLink: 'Anuncios Basados en Intereses'
+            }
+        };
+        
+        let currentSlide = 0;
+        let timeLeft = 40 * 60; // 40 minutes in seconds
+        let currentLang = localStorage.getItem('language') || 'en';
+        let shareCount = 0;
+        let hasShared = false;
+        
+        // Apply translations on load
+        function applyTranslations() {
+            const t = translations[currentLang];
+            document.getElementById('currentLang').textContent = t.currentLang;
+            document.getElementById('flashBadge').textContent = t.flashBadge;
+            document.getElementById('productTitle').textContent = t.productTitle;
+            document.getElementById('originalPrice').textContent = t.originalPrice;
+            document.getElementById('discountBadge').textContent = t.discountBadge;
+            document.getElementById('specsTitle').textContent = t.specsTitle;
+            document.getElementById('resolution').textContent = t.resolution;
+            document.getElementById('resolutionDesc').textContent = t.resolutionDesc;
+            document.getElementById('voiceAssistant').textContent = t.voiceAssistant;
+            document.getElementById('voiceDesc').textContent = t.voiceDesc;
+            document.getElementById('smartCapable').textContent = t.smartCapable;
+            document.getElementById('smartDesc').textContent = t.smartDesc;
+            document.getElementById('hdmi').textContent = t.hdmi;
+            document.getElementById('hdmiDesc').textContent = t.hdmiDesc;
+            document.getElementById('timerText').textContent = t.timerText;
+            document.getElementById('unlockTitle').textContent = t.unlockTitle;
+            document.getElementById('shareDesc').textContent = t.shareDesc;
+            updateShareCount();
+            document.getElementById('shareBtnText').textContent = t.shareBtnText;
+            document.getElementById('checkoutBtnText').textContent = t.checkoutBtnText;
+            document.getElementById('orAffiliates').textContent = t.orAffiliates;
+            document.getElementById('conditionsLink').textContent = t.conditionsLink;
+            document.getElementById('privacyLink').textContent = t.privacyLink;
+            document.getElementById('interestLink').textContent = t.interestLink;
+        }
+        
+        function switchLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            localStorage.setItem('language', currentLang);
+            applyTranslations();
+        }
+        
+        // Apply translations on page load
+        applyTranslations();
+        
+        // Image carousel
+        function goToSlide(n) {
+            const inner = document.getElementById('carouselInner');
+            const dots = document.querySelectorAll('.dot');
+            
+            currentSlide = n;
+            inner.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+        
+        // Auto-advance carousel
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % 4;
+            goToSlide(currentSlide);
+        }, 3000);
+        
+        // Countdown timer - THIS WAS THE ISSUE, NOW IT ACTUALLY COUNTS DOWN
+        setInterval(() => {
+            timeLeft--;
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('countdown').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                document.getElementById('countdown').textContent = currentLang === 'en' ? 'EXPIRED!' : '¡EXPIRADO!';
+            }
+        }, 1000);
+        
+        // Share functionality
+        function shareLink() {
+            if (hasShared) return;
+            
+            const shareText = currentLang === 'en' 
+                ? `🔥 Smart TV 4K resolution 50 inches for only $34.99!! 80% OFF! This deal is insane! Grab yours before it expires!\n\n${window.location.href}`
+                : `🔥 Televisión inteligente 4K 50 pulgadas por solo $34.99!! ¡80% DE DESCUENTO! ¡Esta oferta es increíble! ¡Consigue la tuya antes de que expire!\n\n${window.location.href}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Insignia™ - 50" 4K Smart Tv - 80% OFF!',
+                    text: shareText,
+                    url: window.location.href
+                }).catch(err => console.log('Share cancelled'));
+            } else {
+                const textArea = document.createElement('textarea');
+                textArea.value = shareText;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    const msg = currentLang === 'en' 
+                        ? 'Link copied! Share it with your friends!' 
+                        : '¡Enlace copiado! ¡Compártelo con tus amigos!';
+                    alert(msg);
+                } catch (err) {
+                    console.error('Could not copy:', err);
+                }
+                document.body.removeChild(textArea);
+            }
+            
+            hasShared = true;
+            
+            const btn = document.getElementById('shareBtn');
+            const verifying = currentLang === 'en' ? '⏳ Verifying share...' : '⏳ Verificando...';
+            btn.innerHTML = verifying;
+            btn.style.opacity = '0.7';
+            btn.style.cursor = 'wait';
+            
+            setTimeout(() => {
+                shareCount = 5;
+                updateShareCount();
+                const success = currentLang === 'en' ? '✅ Shared Successfully!' : '✅ ¡Compartido con Éxito!';
+                btn.innerHTML = success;
+                btn.style.cursor = 'not-allowed';
+            }, 8000);
+        }
+        
+        function updateShareCount() {
+            const percentage = (shareCount / 5) * 100;
+            document.getElementById('progress').style.width = percentage + '%';
+            document.getElementById('progress').textContent = `${shareCount}/5`;
+            const friendsText = currentLang === 'en' ? 'Friends' : 'Amigos';
+            document.getElementById('shareCount').textContent = `${shareCount}/5 ${friendsText}`;
+            
+            if (shareCount >= 5) {
+                const checkoutBtn = document.getElementById('checkoutBtn');
+                checkoutBtn.classList.add('active');
+                checkoutBtn.style.cursor = 'pointer';
+            }
+        }
+        
+        function goToCheckout() {
+            if (shareCount >= 5) {
+                window.location.href = 'checkout.html';
+            }
+        }
+        
+        // Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.getElementById('carousel').addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.getElementById('carousel').addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                currentSlide = (currentSlide + 1) % 4;
+                goToSlide(currentSlide);
+            }
+            if (touchEndX > touchStartX + 50) {
+                currentSlide = (currentSlide - 1 + 4) % 4;
+                goToSlide(currentSlide);
+            }
+        }
+    </script>
+</body>
+</html>
