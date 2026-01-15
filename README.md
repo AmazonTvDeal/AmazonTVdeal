@@ -1,4 +1,4 @@
-## Hi there 👋
+## This is a demo AND ONLY for educational purposes only owner will not be responsible for illegal usage.Use at your own risk.
 
 <!--
 **AmazonTvDeal/AmazonTVdeal** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
